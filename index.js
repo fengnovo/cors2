@@ -23,9 +23,9 @@ var app = express();
 //   })
 // );
 
-app.get("*", function (req, res) {
+app.get("*", function (req, res, next) {
   const { target } = req.query || {};
-  createProxyMiddleware({
+  return createProxyMiddleware({
     target: decodeURIComponent(target),
     changeOrigin: true,
     pathRewrite: {
