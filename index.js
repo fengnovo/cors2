@@ -1,17 +1,17 @@
 var express = require("express");
-const cors = require("cors");
+// const cors = require("cors");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 // 使用代理
 var app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:3001"], // 所要允许跨域的ip
-    methods: ["GET", "POST"],
-    alloweHeaders: ["Conten-Type", "Authorization"],
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3001"], // 所要允许跨域的ip
+//     methods: ["GET", "POST"],
+//     alloweHeaders: ["Conten-Type", "Authorization"],
+//   })
+// );
 
 // app.use(
 //   createProxyMiddleware({
@@ -34,4 +34,4 @@ app.get("*", function routeHandler(req, res) {
   })(req, res);
 });
 
-app.listen(3008);
+app.listen(3000);
