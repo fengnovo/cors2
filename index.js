@@ -23,8 +23,15 @@ var app = express();
 //   })
 // );
 
-app.get("*", function routeHandler(req, res) {
-  res.send("ok");
+app.get("*", function (req, res) {
+  const { target } = req.query || {};
+  createProxyMiddleware({
+    target: decodeURIComponent(target),
+    changeOrigin: true,
+    pathRewrite: {
+      "^/": "/",
+    },
+  })(req, res);
 });
 
 app.listen(3000);
